@@ -12,17 +12,22 @@ public class storeExercise {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         PrintStream out = new PrintStream(System.out);
-        String menu = "y", receipt ="", item = "";
-        String name;
+        String menu = "y",receipt = "",item = "";
+        double total = 0, price = 0;
+        int quantity,itemNo = 1;
+
 
 
 
         displayMenu(out);
         switch(options(input,out)){
             case 1:
-                item = items(input, out);
-                price = price(input, out);
-                quantity = askQuantity(input, out);
+                item = userItem(input, out);
+                price = userPrice(input, out);
+                quantity = userQuantity(input, out);
+                receipt += "\n" + itemNo + "." + quantity + "x" + item + " " + amount(price);
+                total += quantity * price;
+                itemNo++;
                 break;
             case 2:
                 System.out.println("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*");
@@ -42,12 +47,11 @@ public class storeExercise {
 
     }
 
-    public static void displayMenu(Scanner input,PrintStream out){
-
-        System.out.println("What is your name?");
-        String name = input.nextLine();
-        System.out.println("****Welcome to our store " + name + "****");
-        System.out.println("Hello " + name + " please choose an option!");// display there name after hello
+    public static void displayMenu(PrintStream out){
+//        System.out.println("What is your name?");
+//        String name = input.nextLine();
+        System.out.println("****Welcome to our store****");
+        System.out.println("Hello please choose an option!");// display there name after hello
         System.out.println("1) Sale");
         System.out.println("2) Receipt");
         System.out.println("3) Exit");
@@ -65,18 +69,18 @@ public class storeExercise {
         return option;
     }
 
-    public static String items(Scanner input,PrintStream out){
+    public static String userItem(Scanner input,PrintStream out){
         System.out.println("What item would you like to buy?");
         return input.nextLine();
     }
 
-    public static double price(Scanner input,PrintStream out){
+    public static double userPrice(Scanner input,PrintStream out){
         System.out.println("How much is the price for that item?");
         return input.nextDouble();
 
     }
 
-    public static int quantity(Scanner input,PrintStream out){
+    public static int userQuantity(Scanner input,PrintStream out){
         System.out.println("How many would you like to buy?");
         int quantity = input.nextInt();
         input.nextLine();
