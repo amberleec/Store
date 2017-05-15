@@ -19,7 +19,7 @@ public class storeExercise {
 
         while (menu.equalsIgnoreCase("y")) {
 
-            displayMenu(out);
+            displayMenu(input,out);
             switch (options(input, out)) {
                 case 1:
                     item = userItem(input, out);
@@ -51,11 +51,16 @@ public class storeExercise {
         System.out.println("Thank you for shopping with us!");
     }
 
-    public static void displayMenu(PrintStream out) {
+//    public static void userName(Scanner input,PrintStream out){
 //        System.out.println("What is your name?");
 //        String name = input.nextLine();
-        System.out.println("****Welcome to our store****");
-        System.out.println("Hello please choose an option!");// display there name after hello
+//    }
+
+    public static void displayMenu(Scanner input,PrintStream out){
+        System.out.println("What is your name?");
+        String name = input.nextLine();
+        System.out.println("****Welcome to our store " + name + "****");
+        System.out.println(name + ", please choose an option!");// display there name after hello
         System.out.println("1) Sale");
         System.out.println("2) Receipt");
         System.out.println("3) Exit");
