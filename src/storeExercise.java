@@ -14,6 +14,7 @@ public class storeExercise {
 
         System.out.println("What is your name?");
         System.out.println("What item would you like?");
+        System.out.println("How many would you like?");
         System.out.println("Price fot item " );
         System.out.println("$");
         System.out.println("Would you like to continue? y/n");
