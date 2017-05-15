@@ -25,13 +25,15 @@ public class storeExercise {
                     item = userItem(input, out);
                     price = userPrice(input, out);
                     quantity = userQuantity(input, out);
-                    receipt += "\n" + itemNo + "." + quantity + "x" + item + " " + amount(price);
+                    receipt += "\n " + itemNo + ") " + quantity + " x " + item + " " + amount(price);
                     total += quantity * price;
                     itemNo++;
                     break;
                 case 2:
                     System.out.println("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*");
                     System.out.println("Thank you for shopping with our store. We will see you next time!");
+                    receipt += "\n\nTotal: " + amount(total);
+                    System.out.println(receipt);
                     break;
                 case 3:
                     System.out.println("Thank you! Have a good day!");
