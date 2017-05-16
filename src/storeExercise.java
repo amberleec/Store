@@ -64,6 +64,8 @@ public class storeExercise {
         System.out.println("1) Sale");
         System.out.println("2) Receipt");
         System.out.println("3) Exit");
+        int x = 5 * 4 % 3;
+        System.out.println(x);
 
 
     }
