@@ -12,7 +12,7 @@ public class storeExercise {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         PrintStream out = new PrintStream(System.out);
-        String menu = "y", repeate, name = "", receipt = "", item = "";
+        String menu = "y", repeat, name = "", receipt = "", item = "";
         double total = 0, price = 0;
         int quantity, itemNo = 1;
 
@@ -30,8 +30,8 @@ public class storeExercise {
                         receipt += "\n " + itemNo + ") " + quantity + " x " + item + " " + amount(price);
                         total += quantity * price;
                         itemNo++;
-                        repeate = recursion(input, out);
-                    } while (repeate.equalsIgnoreCase("y"));
+                        repeat = recursion(input, out);
+                    } while (repeat.equalsIgnoreCase("y"));
                     break;
                 case 2:
                     // Receipt visuals
