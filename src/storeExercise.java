@@ -12,16 +12,18 @@ public class storeExercise {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         PrintStream out = new PrintStream(System.out);
-        String menu = "y", repeate = "y", receipt = "", item = "";
+        String menu = "y", repeate, name = "", receipt = "", item = "";
         double total = 0, price = 0;
         int quantity, itemNo = 1;
 
-
+        // While loop for the Switch case
+        name = userName(input, out);
         while (menu.equalsIgnoreCase("y")) {
-            displayMenu(input, out);
+            displayMenu(out);
             switch (options(input, out)) {
                 case 1:
-                    while (repeate.equalsIgnoreCase("y")) {
+                    // While loop for adding items
+                    do {
                         item = userItem(input, out);
                         price = userPrice(input, out);
                         quantity = userQuantity(input, out);
@@ -29,16 +31,21 @@ public class storeExercise {
                         total += quantity * price;
                         itemNo++;
                         repeate = recursion(input, out);
-                    }
+                    } while (repeate.equalsIgnoreCase("y"));
                     break;
                 case 2:
-                    System.out.println("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*");
-                    System.out.println("Thank you for shopping with our store. We will see you next time!");
+                    // Receipt visuals
+                    System.out.println("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*");
                     receipt += "\n\nTotal: " + amount(total);
                     System.out.println(receipt);
+                    System.out.println("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*");
                     break;
                 case 3:
-                    System.out.println("Thank you! Have a good day!");
+                    System.out.println("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*");
+                    System.out.println("Thank you, " + name + " for shopping with us day!");
+                    receipt += "\n\nTotal: " + amount(total);
+                    System.out.println(receipt);
+                    System.out.println("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*");
                     System.exit(0);
                 default:
                     System.out.println("Invalid! Please select between 1-3!");
@@ -49,19 +56,18 @@ public class storeExercise {
         System.out.println("Thank you for shopping with us!");
     }
 
-    public static void displayMenu(Scanner input, PrintStream out) {
+    public static String userName(Scanner input, PrintStream out) {
         System.out.println("What is your name?");
-        String name = input.nextLine();
-        System.out.println("****Welcome to our store " + name + "****");
-        System.out.println(name + ", please choose an option!");// display there name after hello
-        System.out.println("1) Sale");
-        System.out.println("2) Receipt");
-        System.out.println("3) Exit");
+        String name = input.next();
+        System.out.println("*+*+*+* Welcome to A&J " + name + " *+*+*+*");
+        return name;
     }
 
-    public static String name(Scanner input, PrintStream out) {
-        System.out.println("What is your name?");
-        return input.nextLine();
+    public static void displayMenu(PrintStream out) {
+        System.out.println("Please choose an option!");// display there name after hello
+        System.out.println("1) Sale");
+        System.out.println("2) Check Cart");
+        System.out.println("3) Print Receipt");
     }
 
     public static int options(Scanner input, PrintStream out) {
